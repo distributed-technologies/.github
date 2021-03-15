@@ -1,0 +1,15 @@
+name: Lint Helm chart on pullrequest
+
+on:
+  pull_request:
+    branches: [ $default-branch ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run Helm lint
+        run: helm lint chart
