@@ -1,0 +1,8 @@
+{
+    "name": "Lint Helm chart on pullrequest",
+    "description": "Linting a helm chart when there is an ipdate on a pull request",
+    "iconName": "helm",
+    "categories": [
+        "helm"
+    ]
+}
