@@ -1,8 +1,5 @@
 {
     "name": "Helm Chart Build Release",
     "description": "A workflow for building and releaseing a helm chart.",
-    "iconName": "example-icon",
-    "filePatterns": [
-        "**/**/Chart.yaml"
-    ]
+    "iconName": "example-icon"
 }
