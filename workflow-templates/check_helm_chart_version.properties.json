@@ -1,5 +1,5 @@
 {
     "name": "Helm Chart Version Check",
     "description": "A workflow for checking that the PR version in the helm chart is a valid semantic bump from later tags.",
-    "iconName": "example-icon"
+    "iconName": "helm"
 }
