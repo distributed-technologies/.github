@@ -1,0 +1,5 @@
+{
+    "name": "Helm Chart Build Release",
+    "description": "A workflow for building and releasing a helm chart.",
+    "iconName": "helm"
+}
