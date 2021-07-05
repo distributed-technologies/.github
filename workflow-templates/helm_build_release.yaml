@@ -1,4 +1,4 @@
-# NOTICE: This workflow check builds the helm chart in chart/folder against the latest release tag. If your helm chart is located elsewere you will need to update this.
+# NOTICE: This workflow check builds the helm chart in the folder named chart against the latest release tag. If your helm chart is located elsewere you will need to update this.
 name: Build and release helm chart
  
 on:
