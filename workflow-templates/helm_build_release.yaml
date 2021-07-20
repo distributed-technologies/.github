@@ -70,7 +70,7 @@ jobs:
 
       - name: Set git info
         run: | 
-         git -C repo config user.email "${{ secrets.BOTMAIL }}"
+         git -C repo config user.email "${{ secrets.BOTEMAIL }}"
          git -C repo config user.name "Bot"
 
       - name: git add changes
