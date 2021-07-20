@@ -39,7 +39,7 @@ jobs:
       # Connect the asset to the release
       - name: Set filename env
         run: |
-          CHART_NAME=$(helm show chart chart/ | grep ^"name: " | cut -f2- -d' ')
+          CHART_NAME=$(helm show chart chart/ | grep ^"name: " | cut -f2 -d' ')
           echo "ASSET_FILENAME=$CHART_NAME-${{ env.HELM_VERSION }}.tgz" >> $GITHUB_ENV
           
       - name: Upload Release Asset
