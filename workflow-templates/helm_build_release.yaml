@@ -36,10 +36,11 @@ jobs:
           draft: false
           prerelease: false
 
-      # Connect the archive to the release
-      - name: Set CHART_NAME env
+      # Connect the asset to the release
+      - name: Set filename env
         run: |
-          echo "CHART_NAME=$(helm show chart chart/ | grep ^"name: " | cut -f2- -d' ')" >> $GITHUB_ENV
+          CHART_NAME=$(helm show chart chart/ | grep ^"name: " | cut -f2 -d' ')
+          echo "ASSET_FILENAME=$CHART_NAME-${{ env.HELM_VERSION }}.tgz" >> $GITHUB_ENV
           
       - name: Upload Release Asset
         id: upload-release-asset 
@@ -48,6 +49,39 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}  
-          asset_path: ./${{ env.CHART_NAME }}-${{ env.HELM_VERSION }}.tgz
-          asset_name: ${{ env.CHART_NAME }}-${{ env.HELM_VERSION }}.tgz
+          asset_path: ./${{ env.ASSET_FILENAME }}
+          asset_name: ${{ env.ASSET_FILENAME }}
           asset_content_type: application/zip
+
+      - name: Make dir to clone into
+        run: mkdir repo
+
+      - name: Clone helm repo
+        uses: sudosubin/git-clone-action@v1.0.1
+        with:
+          repository: 'distributed-technologies/helm-repository'
+          ref: 'example'
+          path: 'repo'
+
+      - name: Move release asset to helm repository
+        run: mv ${{ env.ASSET_FILENAME }} repo/${{ env.ASSET_FILENAME }}
+      
+      - name: Update index file for helm registry
+        run: helm repo index repo
+
+      - name: Set git info
+        run: | 
+         git -C repo config user.email "${{ secrets.BOTEMAIL }}"
+         git -C repo config user.name "Bot"
+
+      - name: git add changes
+        run: git -C repo add .
+      
+      - name: git commit changes
+        run: git -C repo commit -m "Updated the helm registry with file ${{ env.ASSET_FILENAME }}"
+
+      - name: git set remote
+        run: git -C repo remote set-url origin https://${{ secrets.BOTTOKEN }}@github.com/distributed-technologies/helm-repository.git
+
+      - name: git push
+        run: git -C repo push
