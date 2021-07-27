@@ -3,7 +3,7 @@ name: Build and release helm chart
  
 on:
   push:
-    branches: [ $default ]
+    branches: [ main ]
 
 jobs:
   build:
