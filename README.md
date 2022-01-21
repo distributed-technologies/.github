@@ -1,2 +1,1 @@
-# .github
-Repository for shared GitHub workflow across the organization 
+# This is the .github repo for distributed technologies
