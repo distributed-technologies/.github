@@ -10,7 +10,7 @@ We publish all our code under the Apache 2.0 license. We use many different open
 These are the projects that we as team Distributed Technologies are currently working on. 
 
 #### Secure compute and communications platform (SCCP)
-The Secure Compute and Communication Platform (SCCP) project is an attempt at creating a modern, fast, secure, robust, and uniform platform for running a variety of application suites for running and monitoring the Danish energy grid. We are developing this platform to enable other teams at Energinet to create algorithms that can run on the platform and in the future make decisions for the danish power grid.
+The Secure Compute and Communication Platform (SCCP) project is an attempt at creating a modern, fast, secure, robust, and uniform platform for running a variety of application suites for running and monitoring infrastructure.
 
 If you are visiting this page to try out this platform and develop applications for it, please visit the [Yggdrasil repository](https://github.com/distributed-technologies/yggdrasil) for instructions on how to deploy our platform to Azure in a simple and fast way. 
 
